@@ -27,6 +27,7 @@ class MainActivity : AppCompatActivity() {
     lateinit var diceImage: ImageView
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        //Primeras pruebas de modificación
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
