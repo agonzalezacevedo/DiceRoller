@@ -19,6 +19,7 @@ package com.example.android.diceroller
 import android.os.Bundle
 import android.widget.Button
 import android.widget.ImageView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import java.util.*
 
@@ -29,27 +30,32 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         //Primeras pruebas de modificación
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_main) //se carga el unico layout establecido
+        val text = getString(R.string.roll) //seleccionamos el texto que queremos que muestre el toast
+        val toast = Toast.makeText(applicationContext, text, Toast.LENGTH_SHORT) //lo mostramos con una duracion corta de tiempo
 
-        val rollButton: Button = findViewById(R.id.roll_button)
+        val rollButton: Button = findViewById(R.id.roll_button) //usamos la funcion findview para usar el id establecido en el xml del boton
         rollButton.setOnClickListener {
-            rollDice()
+            rollDice() //cuando se pulse el boton se ejecutara la funcion de cambio de imagen
+            toast.show() //llamamos al metodo show para que lo muestre cada vez que tiremos del dado
         }
 
+        //carga la primera imagen vacia
         diceImage = findViewById(R.id.dice_image)
     }
 
     private fun rollDice() {
         val randomInt = Random().nextInt(6) + 1
         val drawableResource = when (randomInt) {
-            1 -> R.drawable.dice_1
-            2 -> R.drawable.dice_2
-            3 -> R.drawable.dice_3
-            4 -> R.drawable.dice_4
-            5 -> R.drawable.dice_5
-            else -> R.drawable.dice_6
-        }
+            1 -> R.drawable.cero_estrellas_angra
+            2 -> R.drawable.uno_estrellas_asterios
+            3 -> R.drawable.dos_estrellas_andersen
+            4 -> R.drawable.tres_estrellas_cu
+            5 -> R.drawable.cuatro_estrellas_hessian_lobo
+            else -> R.drawable.cinco_estrellas_tamamo
+        } //elige imagenes de personajes en vez de los xml de dados de forma aleatoria
 
         diceImage.setImageResource(drawableResource)
+        //muestra la imagen establecida por la funcion
     }
 }

@@ -1,4 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Lanzar dado</string>
+    <string name="app_name">Lanzar Dado</string>
     <string name="roll">Tirar</string>
 </resources>
